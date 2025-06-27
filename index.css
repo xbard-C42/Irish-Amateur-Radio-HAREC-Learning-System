@@ -1,0 +1,327 @@
+/* Base styles and animations for Irish Amateur Radio HAREC Learning System */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-fast {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+.animate-fade-in-fast {
+  animation: fade-in-fast 0.2s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-gray-800;
+}
+
+/* Custom table styles */
+.frequency-table {
+  @apply border-collapse border border-gray-300 dark:border-gray-600;
+}
+
+.frequency-table th {
+  @apply bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-3 py-2 text-left font-semibold;
+}
+
+.frequency-table td {
+  @apply border border-gray-300 dark:border-gray-600 px-3 py-2;
+}
+
+.frequency-table tr:hover {
+  @apply bg-gray-50 dark:bg-gray-700/50;
+}
+
+/* Status badges */
+.status-primary {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300;
+}
+
+.status-secondary {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300;
+}
+
+/* Progress indicators */
+.progress-bar {
+  @apply w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2;
+}
+
+.progress-fill {
+  @apply bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-500 ease-out;
+}
+
+/* Quiz result styles */
+.quiz-correct {
+  @apply bg-green-100 border-green-500 text-green-800 dark:bg-green-900/50 dark:text-green-300 dark:border-green-600;
+}
+
+.quiz-incorrect {
+  @apply bg-red-100 border-red-500 text-red-800 dark:bg-red-900/50 dark:text-red-300 dark:border-red-600;
+}
+
+.quiz-neutral {
+  @apply bg-gray-50 border-gray-200 dark:bg-gray-700/50 dark:border-gray-600;
+}
+
+.quiz-selected {
+  @apply bg-blue-100 border-blue-500 dark:bg-blue-900/50 dark:border-blue-600;
+}
+
+/* Prose improvements for content */
+.prose-enhanced {
+  @apply prose prose-blue dark:prose-invert max-w-none;
+}
+
+.prose-enhanced h4 {
+  @apply font-bold text-lg mt-4 mb-2 text-gray-900 dark:text-gray-100;
+}
+
+.prose-enhanced ul {
+  @apply list-disc pl-5 my-4 space-y-1;
+}
+
+.prose-enhanced strong {
+  @apply font-semibold text-gray-900 dark:text-gray-100;
+}
+
+/* Interactive elements */
+.btn-primary {
+  @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-all duration-200;
+}
+
+.btn-success {
+  @apply px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200;
+}
+
+.btn-purple {
+  @apply px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+.card-header {
+  @apply border-b dark:border-gray-700 p-4;
+}
+
+.card-body {
+  @apply p-4;
+}
+
+/* Navigation styles */
+.nav-item {
+  @apply flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200;
+}
+
+.nav-item-active {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300;
+}
+
+.nav-item-hover {
+  @apply hover:bg-gray-100 dark:hover:bg-gray-700/50;
+}
+
+/* Loading states */
+.loading-skeleton {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+}
+
+/* AI Chat styles */
+.chat-container {
+  @apply w-full max-w-2xl h-[80vh] max-h-[700px] bg-white dark:bg-gray-800 rounded-lg shadow-2xl flex flex-col overflow-hidden m-4;
+}
+
+.chat-header {
+  @apply flex items-center justify-between p-4 border-b dark:border-gray-700 flex-shrink-0;
+}
+
+.chat-body {
+  @apply flex-1 p-4 overflow-y-auto space-y-4;
+}
+
+.chat-message {
+  @apply flex items-start space-x-3 max-w-[85%];
+}
+
+.chat-message.user {
+  @apply ml-auto flex-row-reverse space-x-reverse;
+}
+
+.chat-bubble {
+  @apply px-4 py-2 rounded-lg;
+}
+
+.chat-bubble.model {
+  @apply bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200;
+}
+
+.chat-bubble.user {
+  @apply bg-blue-600 text-white;
+}
+
+.chat-footer {
+  @apply p-4 border-t dark:border-gray-700 flex items-center space-x-3 flex-shrink-0;
+}
+
+.chat-input {
+  @apply flex-1 w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 border border-transparent focus:ring-2 focus:ring-blue-500 focus:border-transparent transition;
+}
+
+.chat-send-btn {
+  @apply p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors;
+}
+
+/* Responsive chat container */
+@media (max-width: 768px) {
+  .chat-container {
+    @apply w-full h-full max-h-full rounded-none m-0;
+  }
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 768px) {
+  .mobile-responsive {
+    @apply text-sm;
+  }
+  
+  .frequency-table {
+    @apply text-xs;
+  }
+  
+  .frequency-table th,
+  .frequency-table td {
+    @apply px-2 py-1;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    @apply bg-blue-800 border-2 border-blue-900;
+  }
+  
+  .status-primary {
+    @apply bg-green-200 text-green-900 border border-green-800;
+  }
+  
+  .status-secondary {
+    @apply bg-yellow-200 text-yellow-900 border border-yellow-800;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-fast,
+  .animate-slide-in-right,
+  .animate-pulse-subtle {
+    animation: none;
+  }
+  
+  .transition-all,
+  .transition-colors,
+  .transition-shadow {
+    transition: none;
+  }
+}
+
+/* Custom utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.gray.300') theme('colors.gray.100');
+}
+.dark .scrollbar-thin {
+  scrollbar-color: theme('colors.gray.600') theme('colors.gray.800');
+}
