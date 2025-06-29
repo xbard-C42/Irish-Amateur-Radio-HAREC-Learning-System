@@ -1,6 +1,5 @@
-
 {
-  "name": "irish-amateur-radio-harec-learning-system",
+  "name": "copy-of-copy-of-irish-amateur-radio-harec-learning-system",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "^0.18.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "lucide-react": "^0.523.0"

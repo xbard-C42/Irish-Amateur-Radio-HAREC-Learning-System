@@ -5,22 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Irish Amateur Radio HAREC Learning System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Neurodivergent-Friendly Color Schemes from AuDHD Design Guide */
+      :root {
+        --color-primary: #6B8CAE; /* Muted blue */
+        --color-primary-hover: #597d9e;
+        --color-secondary: #8FBC8F; /* Sage green */
+        --color-accent: #D2B48C; /* Tan */
+        --color-purple: #8B5CF6;
+        --color-purple-hover: #7C3AED;
+        --color-success: #82C09A; /* Soft green */
+        --color-success-text: #2E533E;
+        --color-success-bg-light: #82C09A20;
+        --color-warning: #E6A85C; /* Muted orange */
+        --color-warning-text: #6C4A21;
+        --color-warning-bg-light: #E6A85C20;
+        
+        /* Light Theme */
+        --color-background: #FEFEFE; /* Off-white */
+        --color-foreground: #FFFFFF; /* white */
+        --color-foreground-hover: #F9FAFB; /* gray-50 */
+        --color-text: #2C3E50; /* Dark gray-blue */
+        --color-text-muted: #6B7280; /* gray-500 */
+        --color-border: #E5E7EB; /* gray-200 */
+        --color-input: #F9FAFB; /* gray-50 */
+        --color-input-hover: #F3F4F6;
+      }
+      .dark {
+        --color-primary: #81a1c1;
+        --color-primary-hover: #88c0d0;
+        --color-secondary: #a3be8c;
+        --color-accent: #d2b48c;
+        --color-purple: #A78BFA;
+        --color-purple-hover: #9333EA;
+        --color-success: #82C09A;
+        --color-success-text: #bfe4c9;
+        --color-success-bg-light: #82C09A20;
+        --color-warning: #E6A85C;
+        --color-warning-text: #f0c686;
+        --color-warning-bg-light: #E6A85C20;
+
+        /* Dark Theme */
+        --color-background: #0d1117; /* even darker bg */
+        --color-foreground: #161b22; /* darker fg */
+        --color-foreground-hover: #1F2937;
+        --color-text: #eceff4; /* gray-50 */
+        --color-text-muted: #9CA3AF; /* gray-400 */
+        --color-border: #374151; /* gray-700 */
+        --color-input: #374151AA; /* gray-700/50 */
+        --color-input-hover: #374151;
+      }
+
+      /* High Contrast Mode */
+      [data-contrast="high"] {
+        --color-background: #000000;
+        --color-foreground: #111111;
+        --color-foreground-hover: #222222;
+        --color-text: #FFFFFF;
+        --color-text-muted: #DDDDDD;
+        --color-border: #FFFFFF;
+        --color-primary: #FFFF00;
+        --color-primary-hover: #DDDD00;
+      }
+      .dark[data-contrast="high"] {
+         /* Same as light high contrast for max contrast */
+        --color-background: #000000;
+        --color-foreground: #111111;
+        --color-foreground-hover: #222222;
+        --color-text: #FFFFFF;
+        --color-text-muted: #DDDDDD;
+        --color-border: #FFFFFF;
+        --color-primary: #FFFF00;
+        --color-primary-hover: #DDDD00;
+      }
+
+      /* Calming Mode */
+      [data-sensory="calm"] {
+        --color-primary: #A8B5A8;
+        --color-primary-hover: #97a397;
+        --color-secondary: #C7D2CC;
+        --color-accent: #E8E5D1;
+        --color-background: #F5F7F5;
+        --color-foreground: #FFFFFF;
+        --color-foreground-hover: #FAFAF9;
+        --color-text: #525f52;
+        --color-text-muted: #848e84;
+        --color-border: #D1D9D1;
+      }
+       .dark[data-sensory="calm"] {
+        --color-primary: #667266;
+        --color-primary-hover: #798679;
+        --color-secondary: #4a544a;
+        --color-accent: #878474;
+        --color-background: #252825;
+        --color-foreground: #343834;
+        --color-foreground-hover: #414641;
+        --color-text: #e0e5e0;
+        --color-text-muted: #b1b8b1;
+        --color-border: #505850;
+      }
+      
+      body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      [data-motion="reduced"] *, [data-motion="reduced"] *::before, [data-motion="reduced"] *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+      }
+
+      /* Enhanced Focus */
+      [data-enhanced-focus="true"] *:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      
+      .animate-fade-in-fast {
+         animation: fadeIn 0.3s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.1.0",
     "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
     "react/": "https://esm.sh/react@^19.1.0/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.523.0",
-    "path": "https://esm.sh/path@^0.12.7",
-    "vite": "https://esm.sh/vite@^7.0.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.7.0"
+    "lucide-react": "https://esm.sh/lucide-react@^0.523.0"
   }
 }
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-gray-100 dark:bg-gray-900">
+  <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

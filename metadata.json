@@ -1,5 +1,6 @@
 {
-  "name": "Irish Amateur Radio HAREC Learning System",
-  "description": "An empty app",
-  "requestFramePermissions": []
+  "name": "Copy of Copy of Irish Amateur Radio HAREC Learning System",
+  "description": "A comprehensive learning and reference application for the Irish Amateur Radio (HAREC) Licence examination, based on the ComReg guidelines and IRTS study materials. It includes study modules, regulatory information, frequency band charts, and practice quizzes.",
+  "requestFramePermissions": [],
+  "prompt": ""
 }
